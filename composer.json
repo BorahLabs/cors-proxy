@@ -56,5 +56,5 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "bin": ["cors-proxy"]
+    "bin": ["builds/cors-proxy"]
 }
