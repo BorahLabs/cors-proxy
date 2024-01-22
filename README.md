@@ -1,40 +1,41 @@
-<a href="https://supportukrainenow.org/"><img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg" width="100%"></a>
+# CORS Proxy
 
-------
+CORS Proxy is a CLI tool based on [Laravel Zero](https://laravel-zero.com/) and it's extremely useful to remove all the CORS errors you might have when developing locally.
 
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" />
-</p>
+## Why
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://github.com/laravel-zero/laravel-zero/actions/workflows/tests.yml/badge.svg" alt="Build Status"></img></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License"></a>
-</p>
+Unfortunately we don't always have the luxury of having access to the back-end or the ability to change the CORS headers. This tool will help you to bypass that issue.
 
-<h4> <center>This is a <bold>community project</bold> and not an official Laravel one </center></h4>
+## Requirements
 
-Laravel Zero was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+To use CORS Proxy, you need to have PHP 8.1+ installed on your computer. Also, you need to have [Composer](https://getcomposer.org/) installed.
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+## Installation
 
-------
+To install CORS Proxy, you need to run the following command:
 
-## Documentation
+```bash
+composer global require borah/cors-proxy
+```
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+## Usage
 
-## Support the development
-**Do you like this project? Support it by donating**
+The usage is pretty simple. This is the command structure:
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+```bash
+cors-proxy <host> {--headers=} {--port=1337}
+```
 
-## License
+The `host` argument is the URL of the host you want to proxy. The `--headers` option should be a JSON with default headers to send in all requests. The `--port` option is used to specify the port you want to use for the proxy server.
 
-Laravel Zero is an open-source software licensed under the MIT license.
+## Example
+
+```bash
+cors-proxy "https://httpbin.org"
+```
+
+This command will start the proxy server on port 1337 and will proxy all requests to `https://httpbin.org`.
+
+```bash
+curl -X GET "http://localhost:1337/get?foo=bar&baz=qux" -H "x-custom-header: custom value"
+```

@@ -35,6 +35,18 @@ class HttpServer {
                 $headers = [];
                 $method = mb_strtolower($request->getMethod());
 
+                // bypass CORS
+                if ($method === 'options') {
+                    return new Response(
+                        status: HttpStatus::NO_CONTENT,
+                        headers: [
+                            'Access-Control-Allow-Origin' => '*',
+                            'Access-Control-Allow-Methods' => '*',
+                            'Access-Control-Allow-Headers' => '*',
+                        ],
+                    );
+                }
+
                 foreach ($request->getHeaders() as $name => $values) {
                     foreach ($values as $value) {
                         $headers[$name] = $value;
@@ -58,9 +70,14 @@ class HttpServer {
                 }
 
                 $response = $response->$method((string) $endpoint);
+                $responseHeaders = $response->headers();
+                $responseHeaders['Access-Control-Allow-Origin'] = '*';
+                $responseHeaders['Access-Control-Allow-Methods'] = '*';
+                $responseHeaders['Access-Control-Allow-Headers'] = '*';
+
                 return new Response(
                     status: $response->status(),
-                    headers: $response->headers(),
+                    headers: $responseHeaders,
                     body: $response->body(),
                 );
             }
