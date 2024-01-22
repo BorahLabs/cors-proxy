@@ -1,8 +1,8 @@
 {
-    "name": "laravel-zero/laravel-zero",
-    "description": "The Laravel Zero Framework.",
-    "keywords": ["framework", "laravel", "laravel zero", "console", "cli"],
-    "homepage": "https://laravel-zero.com",
+    "name": "borah/cors-proxy",
+    "description": "Bypass CORS issues when developing locally with no hassle.",
+    "keywords": ["borah", "cors", "proxy"],
+    "homepage": "https://borah.agency",
     "type": "project",
     "license": "MIT",
     "support": {
@@ -11,8 +11,8 @@
     },
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Raúl López",
+            "email": "raul@borah.agency"
         }
     ],
     "require": {
