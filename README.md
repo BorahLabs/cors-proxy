@@ -49,5 +49,9 @@ curl -X GET "http://localhost:1337/get?foo=bar&baz=qux" -H "x-custom-header: cus
 - Compass: An agent-driven tool to help manage companies more efficiently
 - [Prompt Token Counter](https://prompttokencounter.com/): Simple tool to count tokens in prompts
 - [Sabor en la Oficina](https://saborenlaoficina.es/): Website + catering management platform
+- [Prompt Token Counter](https://www.prompttokencounter.com/): Simple free tool to count tokens in prompts
+- [PDF to Markdown](https://pdftomarkdown.app/): Simple free tool to convert PDF files into Markdown format
+
+We like to use Laravel for most of our projects and we love to tackle big, complicated problems. Feel free to reach out and we can have a virtual coffee!
 
 We like to use Laravel for most of our projects and we love to tackle big, complicated problems. Feel free to reach out and we can have a virtual coffee!
